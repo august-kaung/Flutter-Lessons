@@ -9,7 +9,7 @@ abstract class FakestoreAPI{
   factory FakestoreAPI(Dio dio)=_FakestoreAPI;
 
   @GET(kGetAllProductEndPoint)
-  Future<FakestoreVO>getAllProduct(
+  Future<List<FakestoreVO>>getAllProduct(
       @Query(kApiKey)String apiKey,
 
       );

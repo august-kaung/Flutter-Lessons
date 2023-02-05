@@ -21,13 +21,13 @@ class _FakestoreAPI implements FakestoreAPI {
   String? baseUrl;
 
   @override
-  Future<FakestoreVO> getAllProduct(apiKey) async {
+  Future<List<FakestoreVO>> getAllProduct(apiKey) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<FakestoreVO>(Options(
+        .fetch<List<dynamic>>(_setStreamType<List<FakestoreVO>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -39,7 +39,9 @@ class _FakestoreAPI implements FakestoreAPI {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = FakestoreVO.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => FakestoreVO.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

@@ -22,6 +22,11 @@ class FakestoreVO{
       this.image, this.RatingVO);
   factory FakestoreVO.fromJson(Map<String,dynamic>json)=>_$FakestoreVOFromJson(json);
   Map<String,dynamic>toJson()=>_$FakestoreVOToJson(this);
+
+  @override
+  String toString() {
+    return 'FakestoreVO{title: $title}';
+  }
 }
 
 // "id": 1,

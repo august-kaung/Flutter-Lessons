@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:networktest/network/fake_store_data_agent.dart';
+import 'package:networktest/network/fake_store_data_agent_impl.dart';
 
 void main() {
   runApp(const MyApp());
+  FakestoreDataAgent fakestoreDataAgentImpl=FakestoreDataAgentImpl();
+  fakestoreDataAgentImpl.getAllProduct().then((value) {
+    print(value);
+  });
 }
 
 class MyApp extends StatelessWidget {
